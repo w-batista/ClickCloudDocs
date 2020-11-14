@@ -1,0 +1,29 @@
+
+<mat-card>
+  <mat-card-title color="accent">Lista de Arquivos Armazenados</mat-card-title>
+  <mat-list style="overflow: auto; max-height: 400px;" #p>
+    <mat-list-item *ngFor="let doc of docs">
+      <mat-icon matListIcon>folder_open</mat-icon>
+      <h3 matLine>{{ doc.owner }}</h3>
+      <div matLine fxLayout="row" fxLayoutAlign="space-between center">
+        <p style="line-height: 3px;">
+          <span> {{ doc.fileName }} </span>
+        </p>
+
+      </div>
+      <mat-hint matLine style="font-size: 10px;">data: {{ doc.date | date: 'dd/MM/yyyy'}}</mat-hint>
+    <mat-action-list fxLayout="row" fxLayoutAlign="space-around center">
+      <button mat-icon-button color="primary">
+        <mat-icon (click)="download(doc)">cloud_download</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" (click)="onEdit(doc)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="onDelete(doc)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-action-list>
+    <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

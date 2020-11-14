@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="(authenticated$ | async) && (user$ |async)">
+      <img src="./../assets/logo.png" alt="Logotipo" width="60px" srcset="">
+      <span>{{title}}</span>
+    </div>
+    <div fxLayoutAlign="end center" *ngIf="(authenticated$ | async) && (user$ |async)">
+      <button mat-mini-fab color="accent" aria-label="Menu do usuário" [matMenuTriggerFor]="beforeMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <h3 mat-menu-item>{{(user$ | async).name}}</h3>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            &nbsp;Sair
+          </button>
+        </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

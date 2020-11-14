@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top: 75px;">
+  <div fxFlex="60" fxLayout="column" fxLayoutAlign="center center">
+    <img src="../../assets/logo.png" alt="" width="200px" srcset="">
+    <br>
+    <br>
+    <h3 class="descricao">Gerencie documentos, obtenha em um só lugar os arquivos compartilhados entre sua equipe. Upload e download de arquivos de forma rápida.</h3>
+  </div>
+  <div fxFlex="40" fxLayoutAlign="center" fxLayout="row">
+    <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+
+      <mat-card  class="login-card mat-elevation-z8">
+          <mat-card-title>Login</mat-card-title>
+          <mat-card-content fxLayout="column" *ngIf="!loading" >
+            <mat-form-field >
+              <input matInput formControlName="email" type="text"
+                  placeholder="E-mail" autocomplete="email" readonly="false">
+                  <mat-icon matSuffix>account_circle</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="password" type="password"
+                placeholder="Password" autocomplete="password">
+                <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions fxLayout="row" fxLayoutAlign="end center" >
+            <button mat-button color="primary" type="submit" [disabled]="!loginForm.valid">
+              <mat-icon>check</mat-icon>
+              Login
+            </button>
+          </mat-card-actions>
+          <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+      </mat-card>
+    </form>
+
+  </div>
+</div>
+
+

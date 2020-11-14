@@ -1,0 +1,43 @@
+<form role="form" [formGroup]="formDoc">
+
+  <mat-card class="mat-elevation-z8" flex="80">
+
+    <mat-card-title>Upload de Arquivo PDF</mat-card-title>
+
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-around stretch">
+
+      <div fxLayout="row" fxLayoutAlign="end end">
+      <mat-form-field>
+        <input matInput type="date" formControlName="date"
+           placeholder="Data" readonly autocomplete="none">
+      </mat-form-field>
+    </div>
+      <div fxLayout="row" fxLayoutAlign="space-between stretch">
+        <mat-form-field fxFlex="100">
+          <mat-label>Responsável pelo arquivo</mat-label>
+          <input matInput type="text" required formControlName="owner"
+            placeholder="Seu nome" autocomplete="none">
+            <mat-error *ngIf="formDoc.get('owner').invalid">O preenchimento desse campo é obrigatório</mat-error>
+        </mat-form-field>
+
+      </div>
+
+    <div fxLayout="column" fxLayoutAlign="start start">
+        <input id="selectedPdf" type="file" name="fileUrl"
+        (change)="handlePdfChange($event)" style="display: none;">
+        <br>
+        <button mat-stroked-button color="primary" onclick="document.getElementById('selectedPdf').click()">{{formDoc.get('fileName').value ? 'SUBSTITUIR PDF': 'CARREGAR PDF'}}</button>
+
+      <p *ngIf="formDoc.get('fileName').value" class="arq-loaded">Arquivo carregado: {{formDoc.get('fileName').value}}</p>
+
+    </div>
+
+
+      <div fxLayout="row" fxLayoutAlign="end end" >
+          <button mat-button color="primary" (click)="onSave()" [disabled]="!formDoc.valid">
+            <mat-icon>done</mat-icon>&nbsp;Salvar
+          </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

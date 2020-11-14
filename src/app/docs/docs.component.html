@@ -1,0 +1,10 @@
+<div class="container-p">
+  <div fxLayout="row" fxLayoutAlign="space-around" fxLayoutGap="20px">
+    <div fxFlex="40">
+      <app-docs-form (addDoc)="onAddDoc($event)"></app-docs-form>
+    </div>
+    <div fxFlex="60">
+      <app-docs-list [docs]="docs"></app-docs-list>
+    </div>
+  </div>
+</div>
